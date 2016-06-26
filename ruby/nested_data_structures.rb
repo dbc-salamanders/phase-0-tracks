@@ -23,3 +23,5 @@ candidates = {
 }
 
 p candidates[:clinton][:party]
+p candidates[:trump][:issues][2]
+p candidates[:sanders][:issues].first
