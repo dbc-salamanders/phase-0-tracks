@@ -2,14 +2,13 @@
 ## Convert the string into an array using .split. Store array as variable name_array
 ## Reverse the order of the name using .reverse!
 ## Store first_name and last_names as separate variables (strings)
-## Declare vowels as a variable (string) within the method
 ## Use .split('') to identify each character in first_name and last_name
-## Store split names as variables in split_name_array
-## Iterate through each array in split_name_array
-## Iterate through each string in vowel array. Use .split('') to seperate individual characters
+## Store split names as individual variables
+## Iterate through each array. If vowel, change value to next value. Else, .next. Use map! to make permanent
+## Join altered arrays and store in new array
+## Join new array to print altered name
 
 def alias_manager(name)
-##  vowels = "aeiou"
   name_array = name.split
   name_array.reverse!
   first_name = name_array.at(0)
@@ -51,9 +50,27 @@ end
 new_name = []
 new_name << first_name_split.join
 new_name << last_name_split.join
-new_name_string = new_name * " "
+new_name_string = new_name.join(" ")
+p new_name_string
 end
 
+##alias_manager("Aaron Larkin")
 
-  
-alias_manager("Aaron Larkin")
+def call_name_tool
+	done = false
+	until done == true
+	puts "Please enter your first and last name"
+	  name = gets.chomp
+	  alias_manager(name)
+	
+	puts "Would you like to repeat?"
+	  reply = gets.chomp
+	  if reply = ["No", "no", "n", "N"].include?(reply)
+	    done = true
+	  else
+	    done = false
+	  end
+	end
+end
+
+call_name_tool
