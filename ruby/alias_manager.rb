@@ -54,14 +54,18 @@ new_name_string = new_name.join(" ")
 p new_name_string
 end
 
-##alias_manager("Aaron Larkin")
+##Create a user interface
+## Until the user indicates that they are done, repeat the loop
+## Initiate an empty array
+## Store original name as key in the array
+## Store modified name (call method above) as value
 
-def call_name_tool
+	name_hash = {}
 	done = false
 	until done == true
 	puts "Please enter your first and last name"
 	  name = gets.chomp
-	  alias_manager(name)
+	  name_hash[name] = alias_manager(name)
 	
 	puts "Would you like to repeat?"
 	  reply = gets.chomp
@@ -71,6 +75,10 @@ def call_name_tool
 	    done = false
 	  end
 	end
-end
 
-call_name_tool
+## Iterate over each key-value pair in name_hash
+## Print the modified name and the original name
+
+name_hash.each do |original, modified|
+	puts "#{modified} is actually #{original}!"
+end
