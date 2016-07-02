@@ -24,11 +24,18 @@ class Puppy
  	dog_age
  end
 
+def doggy_treats
+	treats_selection = ["chicken bone", "peanut butter", "leftovers"]
+	treats_selection.each do |treat|
+		puts "Let's give the puppy a treat! How about #{treat}?"
+	end
+end
+
 end
 
 mochi = Puppy.new
-mochi.fetch("tennis ball")
-mochi.speak(7)
-mochi.roll_over
-mochi.dog_years(5)
-
+#mochi.fetch("tennis ball")
+#mochi.speak(7)
+#mochi.roll_over
+#mochi.dog_years(5)
+mochi.doggy_treats
