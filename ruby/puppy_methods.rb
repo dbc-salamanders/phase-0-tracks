@@ -7,3 +7,5 @@ class Puppy
 
 end
 
+mochi = Puppy.new
+mochi.fetch("tennis ball")
