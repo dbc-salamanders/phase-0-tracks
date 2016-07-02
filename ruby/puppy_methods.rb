@@ -1,4 +1,8 @@
 class Puppy
+  
+  def initialize
+    puts "Initializing new puppy instance..."
+  end
 
   def fetch(toy)
     puts "I brought back the #{toy}!"
@@ -38,4 +42,4 @@ mochi = Puppy.new
 #mochi.speak(7)
 #mochi.roll_over
 #mochi.dog_years(5)
-mochi.doggy_treats
+#mochi.doggy_treats
