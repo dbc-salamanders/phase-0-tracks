@@ -1,4 +1,6 @@
 class Santa
+attr_reader :age, :ethnicity
+attr_accessor :gender
   
   def initialize(gender, ethnicity)
     @gender = gender
@@ -36,6 +38,8 @@ def get_mad_at(reindeer_name)
   @reindeer_ranking.insert(-1, reindeer_name)
 end
 
+# Getter and setter methods refactored/replaced with attr_reader/attr_writer at top
+=begin
 def gender(new_gender)
   @gender = new_gender
 end
@@ -48,10 +52,11 @@ end
 def ethnicity
   @ethnicity
 end
- 
+=end
+
 end
 
-# Driver code to test celebrate_birthday method
+### Driver code to test celebrate_birthday method
 =begin
 santa = Santa.new("male", "Japanese")
 santa.age
@@ -61,7 +66,15 @@ santa.celebrate_birthday
 santa.age
 =end
 
-# Call instances of santas method and store in array
+### Driver code to test gender method
+=begin
+santa = Santa.new("male", "Japanese")
+p santa
+santa.gender("female")
+p santa
+=end
+
+### Call instances of santas method and store in array
 =begin
 santas = []
 santas << Santa.new("agender", "female")
@@ -73,7 +86,7 @@ santas << Santa.new("gender fluid", "Mystical Creature (unicorn)")
 santas << Santa.new("N/A", "N/A")
 =end
 
-# Make code above more DRY
+### Make code above more DRY
 =begin
 santas = []
 example_genders = ["agender", "female", "bigender", "male", "female", "gender fluid", "N/A"]
@@ -86,11 +99,22 @@ until index == example_genders.length do
 end
 =end
 
-# Iterate over santas array. Run celebrate_birthday on each instance
+### Iterate over santas array. Run celebrate_birthday on each instance
 =begin
 santas.each do |instance|
   instance.celebrate_birthday
 end
 
 p santas
+=end
+
+### Driver code to test attr_reader and attr_accessor
+=begin
+santa = Santa.new("female", "Persian")
+p santa
+p santa.age
+p santa.ethnicity
+santa.gender = "male"
+santa.celebrate_birthday
+p santa
 =end
