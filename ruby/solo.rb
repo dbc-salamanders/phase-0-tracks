@@ -11,8 +11,7 @@
   # Method takes kilometers as an argument(integer)
   
 class Fussballer
-attr_accessor :position, :up_for_transfer
-attr_reader :age, :club
+attr_accessor :position, :up_for_transfer, :age, :club
   
   def initialize(age, position, club)
     @age = age
@@ -43,7 +42,7 @@ attr_reader :age, :club
 end
 
 # Driver code to test class methods
-
+=begin
 sadio = Fussballer.new(25, "Striker", "Liverpool")
 p sadio
 sadio.change_position
@@ -53,3 +52,61 @@ sadio.transfer_gossip
 sadio.position = "libero"
 sadio.kilometers_ran(15)
 p sadio
+=end
+
+### Release 2
+# Initiate an empty array to store data in
+# Initiate a loop. done = false. Until done = true, loop the below
+# Initiate a new instance of Fussballer class
+# Prompt the user to create a soccer player by entering his/her age. input = @age
+# Prompt the user to enter the player's position. input = @position
+# Prompt the user to enter if the player is interested in switching position
+  # If input = "yes", run change_position
+# Prompt the user to enter if the player is currently interested in transferring to a new team
+  # If input = "yes", up_for_transfer = true
+# Prompt the user to enter (as a number) how many kilometers player ran in the last match. Input = kilometers
+# Using the variables collected, print a statement detailing the players age, position, and club
+# Run the transfer_gossip and kilometers_ran methods
+# Push the instance of the class created into the array
+# Ask the user to type "Done" if they are finished, or any other key to continue
+  # If input = "Done", then done = true and loop ends
+  # Else, repeat loop
+
+players = []
+p players
+done = false
+until done == true do
+  player = Fussballer.new(@age, @position, @club)
+  puts "Let's create a soccer player. Start by entering his age as an integer"
+    player.age = gets.chomp.to_i
+  puts "Next, enter the player's position"
+    player.position = gets.chomp.to_s
+  puts "Is the player interested in switching position?"
+    position_input = gets.chomp.to_s
+    if position_input == "Yes"
+      player.change_position
+    end
+  puts "Which club does the player play for?"
+    player.club = gets.chomp
+  puts "Is the player interested in a transfer to a different club?"
+    transfer_input = gets.chomp.to_s
+    if transfer_input == "Yes"
+      player.up_for_transfer == true
+    else
+      player.up_for_transfer = false
+    end
+  puts "How many kilometers did the player run in the last match?"
+    kilometers = gets.chomp.to_i
+  puts "Ok, great. So you have created a player who is #{player.age} years old, plays in the #{player.position} position for #{player.club}."
+  player.transfer_gossip
+  players << player
+  puts "Type 'done' to exit, or any other key to create another player"
+    repeat = gets.chomp.to_s
+    if repeat == "Done"
+      done = true
+    else
+      done = false
+    end
+end
+
+puts players
