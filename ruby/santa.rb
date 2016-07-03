@@ -1,6 +1,6 @@
 class Santa
-attr_reader :age, :ethnicity
-attr_accessor :gender
+attr_reader :ethnicity
+attr_accessor :gender, :age
   
   def initialize(gender, ethnicity)
     @gender = gender
@@ -118,3 +118,29 @@ santa.gender = "male"
 santa.celebrate_birthday
 p santa
 =end
+
+### Release 4
+# Declare two arrays, one with sample genders and one with sample ethnicities
+# Use attr_accessor to make age readable/writable
+# Initate an instance of Santa class. Arguments will be randomly selected from two arrays
+# Reassign age of santa to random number between 1 and 40 (santa.age = random number)
+# Use .sample to randomly select
+
+genders = ["agender", "female", "bigender", "male", "female", "gender fluid", "N/A"]
+ethnicities = ["black", "Latino", "caucasian", "Japanese-African", "Persian", "Arab", "Jewish", "Berber", "Sikh", "Indian", "Hutu", "Tootsie"]
+ages=*(1...40)
+# Not required, but push each instance into a hash
+santa_hash = {}
+# Use a loop to create 15 instances
+index = 1
+until index == 16 do
+  santa = Santa.new(genders.sample, ethnicities.sample)
+  santa.age = ages.sample
+  puts "This santa is a #{santa.gender} #{santa.ethnicity} who is #{santa.age} years old."
+  santa.speak
+  # Not required, but push each instance into a hash
+  santa_hash[index] = santa
+  index += 1
+end
+
+p santa_hash
