@@ -81,20 +81,53 @@ until done == true do
     player.age = gets.chomp.to_i
   puts "Next, enter the player's position"
     player.position = gets.chomp.to_s
-  puts "Is the player interested in switching position?"
+  puts "Is the player interested in switching position? (y/n)"
+# Refactoring
     position_input = gets.chomp.to_s
+    valid_position_input = false
+    until valid_position_input == true do
+      if position_input == "y"
+        valid_position_input = true
+        player.change_position
+      elsif position_input == "n"
+        valid_position_input = true
+      else 
+        valid_position_input = false
+        puts "That's not acceptable input. Please use 'y' or 'n'."
+        position_input = gets.chomp.to_s
+      end
+    end
+### Old code - commenting out
+=begin
     if position_input = ["Yes", "yes", "Yes ", " Yes", " yes", "y", "Y", " y", " Y", "y ", "Y "].include?(position_input)
       player.change_position
     end
+=end
   puts "Which club does the player play for?"
     player.club = gets.chomp
-  puts "Is the player interested in a transfer to a different club?"
+  puts "Is the player interested in a transfer to a different club? (y or n)"
     transfer_input = gets.chomp.to_s
-    if transfer_input = ["Yes", "yes", "Yes ", " Yes", " yes", "y", "Y", " y", " Y", "y ", "Y "].include?(transfer_input)
-      player.up_for_transfer = true
-    else
-      player.up_for_transfer = false
+# Refactoring
+    valid_transfer_input = false
+    until valid_transfer_input == true do
+      if transfer_input == "y"
+        player.up_for_transfer = true
+        valid_transfer_input = true
+      elsif transfer_input == "n"
+        player.up_for_transfer = false
+        valid_transfer_input = true
+      else
+        puts "That's not acceptable input. Please use 'y' or 'n'."
+        valid_transfer_input = false
+        transfer_input = gets.chomp.to_s
+      end
     end
+# Old code - commenting out
+#    if transfer_input = ["Yes", "yes", "Yes ", " Yes", " yes", "y", "Y", " y", " Y", "y ", "Y "].include?(transfer_input)
+#      player.up_for_transfer = true
+#    else
+#      player.up_for_transfer = false
+#    end
   puts "How many kilometers did the player run in the last match?"
     kilometers = gets.chomp.to_i
   players[player] = kilometers
