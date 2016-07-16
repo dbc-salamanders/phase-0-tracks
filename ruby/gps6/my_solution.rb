@@ -35,6 +35,21 @@ require_relative 'state_data'
 
   end
 
+=begin
+  def predicted_deaths
+    count = 200
+    multiple = 0.4
+    while count > 50
+      if @popluation_density >= count
+        number_of_deaths = (@population * multiple).floor
+        count -= 50
+        multiple -= 0.1
+      else
+        number_of_deaths = (@population * 0.05).floor
+      end
+    end
+=end
+
     # declares speed variable and and calculates population_density using population instance variable as input. Prints final output
   def speed_of_spread #in months
     # We are still perfecting our formula here. The speed is also affected

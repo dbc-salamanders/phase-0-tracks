@@ -44,4 +44,19 @@ function Car(make, max_speed, self_driving) {
   this.make = make;
   this.max_speed = max_speed;
   this.self_driving = self_driving;
+  
+  this.info = function() {
+  	if(self_driving){
+  		console.log("This" + " " + make + " " + "can travel at a maximum speed of" + " " + max_speed + " " + "miles per hour. This car offers self-driving capability.");
+  	}
+  	else {
+  		console.log("This" + " " + make + " " + "can travel at a maximum speed of" + " " + " " + max_speed + " " + "miles per hour. This car does NOT offer self-driving capability.");
+  	}
+  };
 }
+
+var new_car = new Car("Toyota", 120, true);
+new_car.info();
+
+var newer_car = new Car("Audi", 200, false);
+newer_car.info();
