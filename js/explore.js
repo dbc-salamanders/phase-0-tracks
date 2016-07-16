@@ -21,7 +21,6 @@ console.log(reverse)
 }
 
 var valid = true;
-var test = "liverpool"
 
 if (valid) {
 	revstring(test);
