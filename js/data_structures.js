@@ -32,3 +32,16 @@ function horse_object() {
 }
 
 horse_object();
+
+// Release 2 - build a constructor function
+// The constructor function will be for a car ( 'function Car()' )
+// Car will take 3 parameters - make (string), max_speed(integer), self_driving(boolean)
+// Declare variables passed in at initialization as "class variables" using "this"
+// Inside the constructor function, use if statements to print the make of the car, it's max-speed, and whether or not it is self-driving
+
+
+function Car(make, max_speed, self_driving) {
+  this.make = make;
+  this.max_speed = max_speed;
+  this.self_driving = self_driving;
+}
