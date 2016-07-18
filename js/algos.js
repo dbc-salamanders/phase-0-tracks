@@ -28,6 +28,15 @@ console.log(longest_words);
 longest_word(array);
 
 //Release 2
+// The function takes one argument - an integer
+// Initiate a loop with initial index = 0, loop until current index is greater than the integer passed in
+// Declare an empty string and an empty array as variables.
+// Declare the alphabet as a variable.
+// Inside of loop, initiate another loop
+// While the length of the string is less than a randomly generated number, add a random number of letters from the alphabet string (declared earlier) to the string
+// When finished, push the string into the empty array
+// Print the contents of the array when loop is finished
+
 
 function randword(times){
     var string = "";
@@ -35,7 +44,7 @@ function randword(times){
     var array = [];
     for (var i = 0; i < times; i++){
     string = "";
-    while(string.length < Math.floor(Math.random() * 10) + 1 && times > 0 ){
+    while(string.length < Math.floor(Math.random() * 10) && times > 0 ){
         string += chars[Math.floor(Math.random() * chars.length)];
     }
     array.push(string);
