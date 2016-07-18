@@ -19,6 +19,7 @@ require_relative 'state_data'
   # declares number_of_deaths variable and and calculates number_of_deaths using population instance variable as input. Prints final output
   def predicted_deaths
     # predicted deaths is solely based on population density
+=begin
     if @population_density >= 200
       number_of_deaths = (@population * 0.4).floor
     elsif @population_density >= 150
@@ -30,10 +31,24 @@ require_relative 'state_data'
     else
       number_of_deaths = (@population * 0.05).floor
     end
+=end
 
-    print "#{@state} will lose #{number_of_deaths} people in this outbreak"
-
+  if @population_density > 50
+    default = 200
+    count = 0.4
+    until @population_density >= default
+      default -= 50
+      count -= 0.1
+    end
+  else
+    count = 0.05
   end
+
+    number_of_deaths = (@population * count).floor
+    
+    print "#{@state} will lose #{number_of_deaths} people in this outbreak"
+  end
+
 
 =begin
   def predicted_deaths
