@@ -27,6 +27,59 @@ console.log(longest_words);
 
 longest_word(array);
 
+//Release 1
+// The function takes 2 arguments - object_A and object_B
+// Set a loop within the function with an initial index of 0
+// Separate keys in both objects and push into separate arrays - output: keys_array_A and keys_array_B
+// Loop through keys_array_A.
+// If the item at current index in keys_array_A = item at current index in keys_array_B, push item into new array. Store as matches_array
+// Compare values in each object corresponding to matching keys
+// If object_A[key] = object_B[key], evaluate true
+// Loop through matches_array to perform this comparison for each matching key
+// At the top of the function, set default value of matches false
+// For each key-value pair match, set value of matches to true
+// Return matches
+
+function find_matches(object_A, object_B) {
+	var matches = false;
+	var keys_array_A = [];
+	var keys_array_B = [];
+	var matches_array = [];
+	for (var keysA in object_A) {
+		if (!object_A.hasOwnProperty(keysA)) {
+			continue;
+		}
+		
+		keys_array_A.push(keysA);
+		
+	}
+	
+	for (var keysB in object_B) {
+		if (!object_B.hasOwnProperty(keysB)) {
+			continue;
+		}
+		keys_array_B.push(keysB);
+	}
+	
+
+	for (var i = 0; i < keys_array_A.length; i++) {
+		if(keys_array_A[i] == keys_array_B[i]) {
+			matches_array.push(keys_array_A[i]);
+		}
+	}
+	for (var index = 0; index < matches_array.length; index++) {
+		if(object_A[matches_array[index]] == object_B[matches_array[index]]) {
+			matches = true;
+		}
+	}
+	console.log(matches);
+	return matches;
+}
+
+var object1 = {name: "Sam", age: 31};
+var object2 = {name: "Aaron", age: 29};
+find_matches(object1, object2);
+
 //Release 2
 // The function takes one argument - an integer
 // Initiate a loop with initial index = 0, loop until current index is greater than the integer passed in
