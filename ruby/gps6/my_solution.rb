@@ -51,25 +51,31 @@ require_relative 'state_data'
 =end
 
     # declares speed variable and and calculates population_density using population instance variable as input. Prints final output
-  def speed_of_spread #in months
+##  def speed_of_spread #in months
     # We are still perfecting our formula here. The speed is also affected
     # by additional factors we haven't added into this functionality.
-    speed = 0.0
+##    speed = 0.0
 
-    if @population_density >= 200
+##    if @population_density >= 200
+##      speed += 0.5
+##    elsif @population_density >= 150
+##      speed += 1
+##    elsif @population_density >= 100
+##      speed += 1.5
+##    elsif @population_density >= 50
+##      speed += 2
+##    else
+##      speed += 2.5
+##    end
+  
+  def speed_of_spread
+    default = 200
+    speed = 0.5
+    until @population_density >= default
+      default -= 50
       speed += 0.5
-    elsif @population_density >= 150
-      speed += 1
-    elsif @population_density >= 100
-      speed += 1.5
-    elsif @population_density >= 50
-      speed += 2
-    else
-      speed += 2.5
     end
-
     puts " and will spread across the state in #{speed} months.\n\n"
-
   end
 
 end
