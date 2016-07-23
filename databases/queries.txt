@@ -17,3 +17,8 @@ SELECT companies.name, year_ends.date FROM companies JOIN year_ends ON companies
 ## Delete an item that meets some condition (you can choose a condition that makes sense).
 
 DELETE FROM companies WHERE name="Subprime Loans LLC";
+
+##Try a few different joins in your database, and record the commands and the output.
+
+SELECT name, revenue, year_ends.date FROM companies LEFT JOIN year_ends ON companies.fiscalyear = year_ends.id; 
+SELECT name, revenue, year_ends.date FROM companies INNER JOIN year_ends ON companies.fiscalyear = year_ends.id; 
