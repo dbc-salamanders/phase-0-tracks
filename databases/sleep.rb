@@ -15,18 +15,24 @@ require 'sqlite3'
 
 db = SQLite3::Database.new("sleep_log.db")
 
+=begin
 create_table_cmd = <<-SQL
-  CREATE TABLE log (
+  CREATE TABLE IF NOT EXISTS log (
     id INTEGER PRIMARY KEY,
     date VARCHAR (255),
     hours INTEGER,
     refreshed BOOLEAN
   )
 SQL
+=end
 
 def sleep_hours(db, current_date, current_hours, current_refreshed)
-  db.execute(create_table_cmd)
-  db.execute("INSERT INTO log (date, hours, refreshed) VALUES (current_date, current_hours, current_refreshed")
+  db.execute("CREATE TABLE IF NOT EXISTS log (id INTEGER PRIMARY KEY, date VARCHAR (255), hours INTEGER, refreshed BOOLEAN)")
+  db.execute("INSERT INTO log (date, hours, refreshed) VALUES (?, ?, ?)", [current_date, current_hours, current_refreshed])
+end
+
+def get_history(db)
+  db.execute("SELECT * FROM log")
 end
 
 done = false
@@ -40,10 +46,10 @@ until valid_input == true do
   puts "Did you wake up feeling refreshed? (y/n)"
   refreshed_response = gets.chomp.to_s
     if refreshed_response == "y"
-      current_refreshed = true
+      current_refreshed = "true"
       valid_input = true
     elsif refreshed_response == "n"
-      current_refreshed = false
+      current_refreshed = "false"
       valid_input = true
     else puts "I'm sorry, that's not valid input. Please enter your response as 'y' or 'n'"
       valid_input = false
@@ -61,6 +67,15 @@ until valid_end == true do
     valid_end = true
   else  puts "I'm sorry, that's not valid input. Please enter 'done' or 'continue'"
     valid_end = false
+  end
+end
+sleep_hours(db, current_date, current_hours, current_refreshed)
+sleep_history = db.execute("SELECT * FROM log")
+sleep_history.each do |night|
+  if night.at(3) == "true"
+  puts "On #{night.at(1)} you slept #{night.at(2)} hours and woke up feeling refreshed."
+  elsif night.at(3) == "false"
+  puts "On #{night.at(1)} you slept #{night.at(2)} hours and did not wake up feeling refreshed."
   end
 end
 end
