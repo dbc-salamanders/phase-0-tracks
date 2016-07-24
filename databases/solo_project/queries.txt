@@ -1,0 +1,24 @@
+##Display the information in one table (either table is fine).
+
+SELECT * FROM companies;
+
+## Update an item that meets some condition (you can choose a condition that makes sense).
+
+UPDATE companies SET revenue=18000000 WHERE name="Subprime Loans LLC";
+
+## Display the information in both tables using one query.
+
+SELECT * FROM companies, year_ends;
+
+##Display a narrower selection of columns (fewer columns than all of them, in other words) from both tables using one query.
+
+SELECT companies.name, year_ends.date FROM companies JOIN year_ends ON companies.fiscalyear = year_ends.id;
+
+## Delete an item that meets some condition (you can choose a condition that makes sense).
+
+DELETE FROM companies WHERE name="Subprime Loans LLC";
+
+##Try a few different joins in your database, and record the commands and the output.
+
+SELECT name, revenue, year_ends.date FROM companies LEFT JOIN year_ends ON companies.fiscalyear = year_ends.id; 
+SELECT name, revenue, year_ends.date FROM companies INNER JOIN year_ends ON companies.fiscalyear = year_ends.id; 
